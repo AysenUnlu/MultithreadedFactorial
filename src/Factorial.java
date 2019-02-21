@@ -1,3 +1,8 @@
+import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+
 public class Factorial {
     public static long n;
     public static int threadNumber;
@@ -18,6 +23,7 @@ public class Factorial {
      * .
      * Ti->((((i-1)*n)/k)+1,(i*n)/k)
      */
+
     public Factorial(int tNumber, long input){
          if (tNumber<=input) { //when thread number is less than the input
              threadNumber = tNumber;
@@ -77,15 +83,26 @@ public class Factorial {
     * command line at the beginning*/
 
     public static void startThread(){
+
        System.out.println(n+"! with "+threadNumber+" Threads!!");
+
+      // Date pre=new Date();
+
        try {
            for (int i = 1; i <= Factorial.threadNumber; i++) {
                ThreadSample t = new ThreadSample(i, "Thread" + i);
                t.start();
                t.join();
            }
+           if (Factorial.threadNumber==0){
+               long subresult=factorial(1,n);
+               EvaluateResult(subresult);
+           }
        }
        catch(Exception se){System.out.println(se.getMessage());}
+
+      // System.out.println("Run time in ms:"+((Calendar.getInstance().getTimeInMillis())-pre.getTime()));
+
        System.out.println("Total result:"+result); //This is our total result
 
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");

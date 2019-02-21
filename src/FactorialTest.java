@@ -7,9 +7,9 @@ class FactorialTest {
     @org.junit.jupiter.api.Test
     void factorial() throws FactorialException{
 
-            Factorial f1 = new Factorial(3, 6);
+            Factorial f1 = new Factorial(2, 6);
             assertEquals(720, Factorial.result);
-            Factorial f2 = new Factorial(1, 0);
+           Factorial f2 = new Factorial(1, 0);
             assertEquals(1, Factorial.result);
             Factorial f3 = new Factorial(1, 1);
             assertEquals(1, Factorial.result);
@@ -21,8 +21,10 @@ class FactorialTest {
             assertEquals(720, Factorial.result);
             Factorial f7 = new Factorial(5, 3);
             assertEquals(6, Factorial.result);
-            Factorial f8 = new Factorial(10, 15);
-            assertEquals(1.307674368E+12, Factorial.result);
+            Factorial f8 = new Factorial(0, 25);
+            assertEquals(7.0345352775739638e+18, Factorial.result);
+            Factorial f9 = new Factorial(2, 25);
+            assertEquals(7.0345352775739638e+18, Factorial.result);
 
 
 
