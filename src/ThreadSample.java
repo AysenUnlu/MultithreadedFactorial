@@ -1,6 +1,8 @@
+import java.math.BigInteger;
 public class ThreadSample extends Thread {
     public int threadNumber; //indices of the threads
     public String name;      //name of the thread
+    public BigInteger subResult; //the result that thread returns
 
     public ThreadSample(int num,String name){
         threadNumber = num;
@@ -8,13 +10,13 @@ public class ThreadSample extends Thread {
     }
 
     public void run(){
-        long subResult=0;
+
        try {
            if (threadNumber == 1) { //work division for first thread
 
                subResult=Factorial.factorial(1, (Factorial.n / Factorial.threadNumber));
-               System.out.println("My name is "+name+", My subresult is: "+subResult);
-               Factorial.EvaluateResult(subResult);
+              // System.out.println("My name is "+name+", My subresult is: "+subResult);
+
 
            }
            else{ //work division for subsequent threads
@@ -22,10 +24,8 @@ public class ThreadSample extends Thread {
                subResult=Factorial.factorial((((((threadNumber-1)*Factorial.n))/Factorial.threadNumber)+1),
                                             (threadNumber*Factorial.n)/Factorial.threadNumber);
 
-               System.out.println("My name is "+name+", My subresult is: "+subResult);
+              // System.out.println("My name is "+name+", My subresult is: "+subResult);
 
-               Factorial.EvaluateResult(subResult); //result of the factorial computed by the thread reflected in
-                                                    //the main result by calling the method Evaluateresult
            }
        }catch (FactorialException e){e.getMessage();}
     }
